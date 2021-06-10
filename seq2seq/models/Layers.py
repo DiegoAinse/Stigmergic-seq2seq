@@ -58,7 +58,7 @@ class EncoderLayer(nn.Module):
             return hidden, hidden
         
         if self.tipo == 'lstm-enc-dec':
-            encoder_output, hidden = self.RNN(enc_input)   
+            encoder_output,(hidden, cn) = self.RNN(enc_input)
             return hidden, hidden
         
         if self.tipo == 'stigmergic-output':
@@ -158,7 +158,7 @@ class DecoderLayer(nn.Module):
             return decoder_output, decoder_output, decoder_output
         
         if self.tipo == 'lstm-enc-dec': 
-            decoder_output, hidden = self.RNN(dec_input)
+            encoder_output,(hidden, cn) = self.RNN(enc_input)
             return decoder_output, decoder_output, decoder_output
         
         
